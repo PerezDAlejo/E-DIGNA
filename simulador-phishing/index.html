@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Phishing | E-DIGNA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <header class="glass-nav">
+        <h1><i class="fas fa-fish"></i> Simulador de Phishing</h1>
+        <p>Aprende a identificar correos y mensajes maliciosos (Ingeniería Social) como un experto.</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- PANTALLA DE INICIO (MENÚ) -->
+        <div id="start-screen" class="glass-panel text-center">
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px; color: var(--secondary-color);">
+                <i class="fas fa-shield-alt"></i> Agente Anti-Fraude
+            </h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">
+                Bienvenido al simulador. Tu misión es analizar diferentes comunicaciones (correos, SMS, WhatsApp) e identificar las <strong>Banderas Rojas</strong> (señales de fraude) ocultas en ellas antes de que la víctima caiga en la trampa.
+            </p>
+            
+            <div style="background: rgba(0,0,0,0.2); border-radius: 10px; padding: 20px; margin-bottom: 30px; text-align: left;">
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> ¿Cómo jugar?</h3>
+                <ul style="list-style-position: inside; color: #cbd5e1; line-height: 1.8;">
+                    <li>Lee cuidadosamente el mensaje recibido en tu escritorio.</li>
+                    <li>Sospecha de urgencias, enlaces extraños, faltas ortográficas o peticiones inusuales.</li>
+                    <li><strong>Haz clic</strong> en la parte exacta del texto que consideres sospechosa para marcar la bandera roja.</li>
+                    <li>Encuentra las banderas requeridas para avanzar al siguiente nivel.</li>
+                </ul>
+            </div>
+            
+            <button id="btn-start-game" class="action-btn" style="font-size: 1.2rem; padding: 15px 40px;">
+                INICIAR SIMULACIÓN <i class="fas fa-play"></i>
+            </button>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden">
+            <div class="instructions glass-panel">
+                <h2 id="level-title"><i class="fas fa-gamepad"></i> Nivel 1</h2>
+                <p id="level-desc">Analiza el caso.</p>
+                <div class="progress-container">
+                    <span id="score-text">Banderas encontradas: 0 / 3</span>
+                    <div class="progress-bar"><div id="progress-fill"></div></div>
+                </div>
+            </div>
+
+            <!-- Contenedor Dinámico donde se inyectará el formato del escenario -->
+            <div id="scenario-container">
+                <!-- Javascript renderiza aquí el Email, SMS o Chat -->
+            </div>
+
+            <!-- Panel de Feedback de Nivel -->
+            <div id="feedback-panel" class="feedback-panel glass-panel hidden">
+                <h3><i class="fas fa-robot"></i> Análisis Terminado</h3>
+                <div id="feedback-message"></div>
+                <button id="next-level-btn" class="action-btn"><i class="fas fa-arrow-right"></i> Siguiente Caso</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA FINAL (VICTORIA) -->
+        <div id="victory-screen" class="glass-panel text-center hidden">
+            <i class="fas fa-trophy fa-4x" style="color: #fbd38d; margin-bottom: 20px;"></i>
+            <h2 style="font-size: 2.2rem; color: #10b981; margin-bottom: 15px;">¡Simulación Completada!</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">
+                Has demostrado tener un ojo crítico excelente. Ahora estás mejor preparado para enfrentarte a la ingeniería social en el mundo real. 
+            </p>
+            <p style="margin-bottom: 25px; color: var(--primary-color);">Recuerda: <strong>Piensa antes de hacer clic.</strong></p>
+            
+            <button id="btn-restart-game" class="action-btn" style="background: transparent; border: 2px solid var(--primary-color);">
+                <i class="fas fa-redo"></i> Volver a Jugar
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <p><strong>Proyecto E-DIGNA</strong> | Desarrollado por Alejandro Pérez Dávila</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-home"></i> Volver al Inicio</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

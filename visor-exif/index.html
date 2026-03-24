@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revelador de Metadatos | E-DIGNA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- exifr library to parse EXIF purely on the client -->
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <header class="glass-nav">
+        <h1><i class="fas fa-camera"></i> Revelador de Metadatos (EXIF)</h1>
+        <p>Descubre los datos invisibles que compartes en las fotografías que envías.</p>
+    </header>
+
+    <main class="container">
+        <div class="instructions glass-panel">
+            <h2><i class="fas fa-search"></i> Analizador de Imágenes</h2>
+            <p>Selecciona una fotografía tuya (tomada con tu celular). <strong>Privacidad:</strong> La imagen se analiza localmente en tu navegador; <strong>no se sube a ningún servidor</strong>.</p>
+            
+            <div class="upload-area" id="drop-area">
+                <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                <p>Haz clic o arrastra tu imagen aquí</p>
+                <input type="file" id="fileElem" accept="image/jpeg, image/png, image/heic" style="display:none;">
+            </div>
+        </div>
+
+        <!-- Preview & Results appear after upload -->
+        <div id="results-container" class="glass-panel hidden">
+            <h3 class="results-title"><i class="fas fa-clipboard-list"></i> Reporte Forense</b></h3>
+            <div class="results-grid">
+                <div class="image-preview">
+                    <img id="img-preview" src="" alt="Vista previa de imagen">
+                </div>
+                <div class="data-lists" id="metadata-list">
+                    <!-- Dynamic rendering of EXIF keys -->
+                </div>
+            </div>
+            <div id="no-exif-msg" class="hidden alert-warning">
+                No se encontraron metadatos EXIF. Si la bajaste de WhatsApp o redes sociales, es normal, porque ellos "limpian" los metadatos antes de enviarla. ¡Prueba con una foto original de la cámara!
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <p><strong>Proyecto E-DIGNA</strong> | Desarrollado por Alejandro Pérez Dávila</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-home"></i> Volver al Inicio</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

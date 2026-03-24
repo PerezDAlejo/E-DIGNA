@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espejo Digital | E-DIGNA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="disclaimer">
+        <i class="fas fa-exclamation-triangle"></i> Esta página NO guarda nada. Solo te muestra la información que cualquier web puede leer de tu dispositivo silenciosamente. Uso educativo — Proyecto E-DIGNA.
+    </div>
+
+    <header class="glass-nav">
+        <h1><i class="fas fa-search-location"></i> El Espejo Digital</h1>
+        <p>Tu reflejo en internet. Descubre qué datos regalas al navegar.</p>
+    </header>
+
+    <main class="container">
+        <div class="glass-panel info-card" id="data-card">
+            <h2 style="color: var(--primary-color); margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                <i class="fas fa-fingerprint"></i> Tu Huella Actual
+            </h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <i class="fab fa-chrome"></i>
+                    <div>
+                        <strong>Navegador / Versión</strong>
+                        <span id="browser">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <i class="fas fa-laptop"></i>
+                    <div>
+                        <strong>Sistema Operativo</strong>
+                        <span id="os">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <strong>Idioma Detectado</strong>
+                        <span id="language">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <i class="fas fa-desktop"></i>
+                    <div>
+                        <strong>Resolución Pantalla</strong>
+                        <span id="resolution">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Zona Horaria</strong>
+                        <span id="timezone">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <strong>Fecha / Hora Local</strong>
+                        <span id="datetime">Analizando...</span>
+                    </div>
+                </div>
+                <div class="data-item highlight-item" style="grid-column: 1 / -1;">
+                    <i class="fas fa-network-wired"></i>
+                    <div>
+                        <strong>Dirección IP Pública (Aproximada)</strong>
+                        <span id="ip">Obteniendo...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="toggle-tips" class="btn btn-action"><i class="fas fa-shield-alt"></i> Tips para protegerte</button>
+            
+            <div class="tips hidden" id="tips-list">
+                <ul>
+                    <li><strong>IP Visible:</strong> Tu IP revela tu proveedor de internet y ciudad. Usa una VPN si deseas ocultarla.</li>
+                    <li><strong>Navegador:</strong> Los sitios usan la resolución de pantalla y tu sistema para crear una huella única ("Fingerprinting") y rastrearte aunque borres las cookies.</li>
+                    <li>Mantén tu navegador actualizado para protegerte de vulnerabilidades conocidas.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <p><strong>Proyecto E-DIGNA</strong> | Desarrollado por Alejandro Pérez Dávila</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-home"></i> Volver al Inicio</a>
+    </footer>
+
+    <script>
+        // Función para obtener información del navegador y dispositivo
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            let browser = "Desconocido";
+            if (ua.includes("Chrome")) browser = "Chrome " + ua.match(/Chrome\/(\d+)/)?.[1] || "";
+            else if (ua.includes("Firefox")) browser = "Firefox " + ua.match(/Firefox\/(\d+)/)?.[1] || "";
+            else if (ua.includes("Safari") && !ua.includes("Chrome")) browser = "Safari " + ua.match(/Version\/(\d+)/)?.[1] || "";
+            else if (ua.includes("Edge")) browser = "Edge " + ua.match(/Edg\/(\d+)/)?.[1] || "";
+            return browser.trim();
+        }
+
+        function getOS() {
+            const ua = navigator.userAgent;
+            if (ua.includes("Windows")) return "Windows";
+            if (ua.includes("Mac")) return "macOS";
+            if (ua.includes("Linux")) return "Linux";
+            if (ua.includes("Android")) return "Android";
+            if (ua.includes("iOS")) return "iOS";
+            return "Desconocido";
+        }
+
+        async function getPublicIP() {
+            try {
+                const response = await fetch('https://api64.ipify.org?format=json');
+                if (!response.ok) throw new Error('Error');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                return 'No disponible (AdBlocker o Error)';
+            }
+        }
+
+        async function populateData() {
+            document.getElementById('browser').textContent = getBrowserInfo();
+            document.getElementById('os').textContent = getOS();
+            document.getElementById('language').textContent = navigator.language || 'Desconocido';
+            document.getElementById('resolution').textContent = `${screen.width} x ${screen.height}`;
+            document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            setInterval(() => {
+                document.getElementById('datetime').textContent = new Date().toLocaleString('es-ES');
+            }, 1000);
+
+            document.getElementById('ip').textContent = await getPublicIP();
+        }
+
+        document.getElementById('toggle-tips').addEventListener('click', function() {
+            const tips = document.getElementById('tips-list');
+            tips.classList.toggle('hidden');
+        });
+
+        window.addEventListener('load', populateData);
+    </script>
+</body>
+</html>
