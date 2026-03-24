@@ -1,0 +1,254 @@
+/* Global resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: #add8e6;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #003366;
+}
+
+/* Main section */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Card */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Form */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #fff;
+    color: #333;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #add8e6;
+}
+
+/* Strength meter */
+#strength-meter {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#strength-meter::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #add8e6;
+}
+
+/* Analyze button */
+#analyze-btn {
+    padding: 10px 20px;
+    background: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#analyze-btn:hover {
+    background: #002244;
+}
+
+/* Results area */
+#results {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#results.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.developer-credit {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background: #add8e6;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+footer a {
+    color: #003366;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#theme-toggle {
+    background: #003366;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 20px;
+}
+
+#theme-toggle:hover {
+    background: #002244;
+}
+
+/* Dark mode */
+.dark-mode body {
+    background: #333;
+    color: #fff;
+}
+
+.dark-mode header {
+    background: #add8e6;
+}
+
+.dark-mode main p,
+.dark-mode label {
+    color: #fff;
+}
+
+.dark-mode .card {
+    background: #444;
+    color: #fff;
+}
+
+.dark-mode input[type="text"] {
+    background: #555;
+    color: #fff;
+    border-color: #ccc;
+}
+
+.dark-mode #results {
+    color: #fff;
+}
+
+.dark-mode footer {
+    background: #add8e6;
+}
+
+.dark-mode .developer-credit {
+    color: #ccc;
+}
+
+/* Simple hover effects */
+#analyze-btn:hover {
+    background: #002244;
+}
+
+#theme-toggle:hover {
+    background: #002244;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    main p {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+    }
+
+    #analyze-btn {
+        padding: 8px 16px;
+    }
+}

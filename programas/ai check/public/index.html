@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Contraseñas E-DIGNA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Placeholder for logo -->
+        <!-- <img src="logo.png" alt="E-DIGNA Logo"> -->
+        <h1>Creador de Contraseñas E-DIGNA</h1>
+        <button id="theme-toggle">🌙 Dark Mode</button>
+    </header>
+    <main>
+        <p>Escribe una idea de contraseña y descubre cómo mejorarla sin perder su esencia. La seguridad no tiene que ser imposible de memorizar.</p>
+        <div class="card">
+            <form>
+                <label for="password-input">Idea de contraseña:</label>
+                <input type="text" id="password-input" placeholder="Ingresa tu idea de contraseña">
+                <div id="strength-meter"></div>
+                <button type="button" id="analyze-btn">Analizar contraseña</button>
+            </form>
+        </div>
+        <div class="card" id="results"></div>
+        <p class="developer-credit">Desarrollado por Alejandro Pérez Dávila 10°D-ISC</p>
+    </main>
+    <footer>
+        <a href="https://www.e-digna.edu.co/espejo-digital" target="_blank">Learn more</a>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

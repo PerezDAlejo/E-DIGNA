@@ -1,0 +1,23 @@
+{
+  "name": "e-digna-password-analyzer",
+  "version": "2.0.0",
+  "description": "Analizador de contraseñas con IA para el proyecto E-DIGNA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["password", "security", "ai", "analysis", "e-digna"],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "openai": "^4.0.0",
+    "zxcvbn": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
