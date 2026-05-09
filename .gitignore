@@ -1,0 +1,19 @@
+# Documentos (van a nube privada)
+*.docx
+*.pdf
+*.txt
+*.zip
+
+# Temps de Office
+~$*
+~WRL*
+
+# Dev
+node_modules/
+.env
+programas/
+
+# OS
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable
