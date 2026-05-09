@@ -3,6 +3,9 @@
 *.pdf
 *.txt
 *.zip
+informes/
+asesorias/
+Poster/
 
 # Temps de Office
 ~$*
